@@ -1,0 +1,154 @@
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+header {
+  width: 100%;
+  background: linear-gradient(90deg, #007bff, #00d2ff);
+  color: white;
+  text-align: center;
+  padding: 1.5em 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  font-size: 1.6em;
+  font-weight: bold;
+  border-bottom: 3px solid #00d2ff;
+  transition: background 0.3s ease-in-out;
+  transform: perspective(1000px) rotateX(10deg);
+}
+
+header:hover {
+  background: linear-gradient(90deg, #0056b3, #00bcd4);
+  transform: perspective(1000px) rotateX(0deg);
+}
+
+#map {
+  height: 500px;
+  margin: 20px auto;
+  max-width: 90%;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#map:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+#location-data {
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#location-data h2 {
+  text-align: center;
+  color: #333;
+}
+
+#location-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#location-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#location-list li:last-child {
+  border-bottom: none;
+}
+
+#location-list li:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+#location-list li:nth-child(even) {
+  background-color: #e9e9e9;
+}
+
+/* Add some hover effects */
+#location-list li:hover {
+  background-color: #d9d9d9;
+  cursor: pointer;
+}
+
+/* Futuristic glowing effect */
+header, #map, #location-data {
+  position: relative;
+}
+
+header::before, #map::before, #location-data::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #00ffcc, #ff00cc, #00ccff, #ffcc00);
+  background-size: 400% 400%;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+header:hover::before, #map:hover::before, #location-data:hover::before {
+  opacity: 1;
+  animation: glowing 20s linear infinite;
+}
+
+@keyframes glowing {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #map {
+    height: 300px;
+  }
+
+  #location-data {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    font-size: 1.2em;
+    padding: 0.8em 0;
+  }
+
+  #map,
+  #location-container {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #location-container h2 {
+    font-size: 1.3em;
+  }
+
+  #location-list li {
+    font-size: 0.9em;
+  }
+}
